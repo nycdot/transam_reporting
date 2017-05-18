@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["smeeks@camsys.com"]
   s.homepage    = "http://www.camsys.com"
   s.summary     = "Reporting Engine for TransAM"
-  s.description = "TODO: Description of TransamReporting."
+  s.description = "Overlays TransAM Core reporting providing additional functionality"
   s.license     = "MIT"
 
   # Controls the order that engines are loaded for dependencies. transam_core is 1.
