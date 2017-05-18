@@ -1,3 +1,5 @@
+require 'wicked_pdf'
+
 module TransamReporting
   class Engine < ::Rails::Engine
     # Add a load path for this specific Engine

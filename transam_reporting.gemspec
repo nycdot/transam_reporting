@@ -23,6 +23,10 @@ Gem::Specification.new do |s|
   # Should be compatible with the transam_core value.
   s.add_dependency "rails", "~> 4.1.16"
 
+  # PDF
+  s.add_dependency "wicked_pdf"
+  s.add_dependency "wkhtmltopdf-binary"
+  
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "factory_girl_rails"
   s.add_development_dependency "database_cleaner"

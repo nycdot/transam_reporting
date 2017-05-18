@@ -1,0 +1,7 @@
+.navbar-right
+  = link_to report_path(@report, format: :pdf), class: 'btn btn-primary', target: '_blank', id: 'print_report', style: 'margin-top: 5px;', title: 'Export as PDF' do
+    %i.fa.fa-print
+    = " Print"
+  = link_to report_path(@report, format: :csv), target: '_blank', class: 'btn btn-primary', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
+    %i.fa.fa-file
+    = " Export"
