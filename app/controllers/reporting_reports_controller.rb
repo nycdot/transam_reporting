@@ -13,6 +13,10 @@ class ReportingReportsController < ReportsController
         format.pdf do
           send_data report_pdf_template, type: 'application/pdf', disposition: 'inline'
         end
+        format.csv do 
+          headers['Content-Disposition'] = "attachment;filename=#{@report.view_name}.csv"
+          render template: "reports/show.csv.haml"
+        end
       end
     end
   end

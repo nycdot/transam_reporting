@@ -1,0 +1,4 @@
+= CSV.generate_line @data[:labels], {:row_sep => nil}
+
+- @data[:data].each do |row|
+  = CSV.generate_line(row, {:row_sep => nil}).html_safe
