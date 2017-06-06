@@ -4,24 +4,25 @@ class ReportingReportsController < ReportsController
   
   def show
     handle_show do
+      sanitized_report_name = @report.to_s.parameterize('_')
+
       respond_to do |format|
         format.html
         format.xls do
-          sanitized_report_name = @report.name.gsub(" ", "_").underscore
-          response.headers['Content-Disposition'] = "attachment; filename=#{@organization.short_name}_#{sanitized_report_name}.xls"
+          response.headers['Content-Disposition'] = "attachment; filename=#{sanitized_report_name}.xls"
         end
         format.pdf do
-          send_data report_pdf_template, type: 'application/pdf', disposition: 'inline'
+          send_data report_pdf_template(sanitized_report_name), type: 'application/pdf', disposition: 'inline'
         end
         format.csv do 
-          headers['Content-Disposition'] = "attachment;filename=#{@report.view_name}.csv"
+          headers['Content-Disposition'] = "attachment;filename=#{sanitized_report_name}.csv"
           render template: "reports/show.csv.haml"
         end
       end
     end
   end
 
-  def report_pdf_template
-    render_to_string(pdf: "#{@report.view_name}", template: "reports/show")
+  def report_pdf_template(report_name)
+    render_to_string(pdf: "#{report_name}", template: "reports/show")
   end
 end
