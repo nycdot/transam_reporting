@@ -1,9 +1,28 @@
 .navbar-right
   - if @report.printable
-    = link_to report_path(@report, format: :pdf), class: 'btn btn-primary', target: '_blank', id: 'print_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as PDF' do
+    = link_to report_path(@report, format: :pdf), class: 'common_action btn btn-primary', target: '_blank', id: 'print_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as PDF' do
       %i.fa.fa-print
       = " Print"
   - if @report.exportable
-    = link_to report_path(@report, format: :csv), target: '_blank', class: 'btn btn-primary', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
+    = link_to report_path(@report, format: :csv), target: '_blank', class: 'common_action btn btn-primary', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
       %i.fa.fa-file
       = " Export"
+
+:javascript
+
+  $(document).ready(function() {
+
+    // update common action links to pick up any filters
+    $('.common_action').each(function() {
+      var url = document.location.href;
+      var tempArray = url.split("?");
+      var baseURL =$(this).attr('href');
+      var additionalURL = tempArray[1];
+
+      if (additionalURL){
+        var finalURL = baseURL+"?"+additionalURL;
+        $(this).attr('href', finalURL);
+      }
+    });
+
+  });
