@@ -13,10 +13,16 @@ module ReportFormatHelper
       val
     when :checkbox
       format_as_checkbox(val)
+    when :boolean
+      format_as_boolean(val)
     else
       # Note, current implementation uses rescue and is thus potentially inefficient.
       # Consider alterantives.
       format_as_general(val)
     end
+  end
+
+  def current_url(new_params)
+    url_for params: params.merge(new_params)
   end
 end
