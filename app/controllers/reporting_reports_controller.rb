@@ -1,9 +1,13 @@
 class ReportingReportsController < ReportsController
   # Injects pdf and csv formats.
-  # handle_show is a projected method of ReportController that sets up the @report variable.
+  # handle_show is a protected method of ReportController that sets up the @report variable.
   
   def show
     handle_show do
+      # Get the report instance to find "Actions"
+      report_instance = @report.class_name.constantize.new(params)
+      @actions = report_instance.try(:get_actions)
+      
       sanitized_report_name = @report.to_s.parameterize('_')
 
       respond_to do |format|

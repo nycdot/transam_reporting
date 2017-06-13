@@ -1,0 +1,9 @@
+= form_tag report_path(@report), :class => "navbar-form navbar-right", :method => :get, :id => 'report_filter_form', :role => "form" do
+  - @actions.each do |action|
+    .form-group
+      - if action[:type] == :check_box_collection
+        - action[:values].each do |value|
+          = check_box_tag "#{action[:group].to_s}[]", value, (params[action[:group]] || []).include?(value.to_s)
+          = "#{value.to_s.titleize}&nbsp;&nbsp;".html_safe
+  = button_tag :class => 'btn btn-success', :type => 'submit' do
+    %i.fa.fa-filter
