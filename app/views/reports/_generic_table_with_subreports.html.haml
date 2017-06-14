@@ -38,7 +38,7 @@
 
 :javascript
 
-  var report_detail_path = '#{@report_instance.get_detail_path("xxx") + ".js"}';
+  var report_detail_path = '#{@report_instance.get_detail_path("xxx", format: :js)}';
 
   $(document).ready(function() {
 
