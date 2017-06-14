@@ -4,9 +4,7 @@ class ReportingReportsController < ReportsController
   
   def show
     handle_show do
-      # Get the report instance to find "Actions"
-      report_instance = @report.class_name.constantize.new(params)
-      @actions = report_instance.try(:get_actions)
+      @actions = @report_instance.try(:get_actions)
       
       sanitized_report_name = @report.to_s.parameterize('_')
 
@@ -26,6 +24,12 @@ class ReportingReportsController < ReportsController
     end
   end
 
+  def details
+    @key = params[:key]
+    @data = @report_instance.get_detail_data(@key)
+    render params[:view]
+  end
+  
   def report_pdf_template(report_name)
     render_to_string(pdf: "#{report_name}", template: "reports/show")
   end
