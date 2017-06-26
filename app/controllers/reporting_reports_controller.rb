@@ -1,6 +1,9 @@
 class ReportingReportsController < ReportsController
+
+  before_filter :get_report, :only => [:show, :load, :details]
+
   # Injects pdf and csv formats.
-  # handle_show is a protected method of ReportController that sets up the @report variable.
+  # handle_show is a protected method of ReportController that sets up the @report_instance variable.
   
   def show
     handle_show do
@@ -25,9 +28,10 @@ class ReportingReportsController < ReportsController
   end
 
   def details
+    @data = @report.class_name.constantize.get_detail_data(@organization_list, params)
     @key = params[:key]
-    @data = @report_instance.get_detail_data(@key)
-    render params[:view]
+    @details_view = params[:view]
+    render 'reports/report_details'
   end
   
   def report_pdf_template(report_name)
