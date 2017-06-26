@@ -5,5 +5,7 @@
         - action[:values].each do |value|
           = check_box_tag "#{action[:group].to_s}[]", value, (params[action[:group]] || []).include?(value.to_s)
           = "#{value.to_s.titleize}&nbsp;&nbsp;".html_safe
+      -	elsif action[:type] == :select
+        = select_tag "#{action[:where].to_s}", options_for_select(action[:values], params[action[:where]])
   = button_tag :class => 'btn btn-success', :type => 'submit' do
     %i.fa.fa-filter
