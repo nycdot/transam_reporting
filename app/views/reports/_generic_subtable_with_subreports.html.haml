@@ -2,12 +2,14 @@
   %thead
     %tr
       - data[:labels].each_with_index do |label, i|
-        %th{class: table_class_from_format(@data[:formats][i])}= label
+        - unless @data[:formats][i] == :hidden
+          %th{class: table_class_from_format(@data[:formats][i])}= label
     %tbody
       - data[:data].each do |row|
         %tr{:class => row[0] ? 'row-action' : 'subtotals',
             :data => {:target => "#{@report_instance.get_key(row)}"}}
           - row.zip(data[:formats]).each do |col, format|
-            %td{class: table_class_from_format(format)}= format_using_format(col, format)
+            - unless format == :hidden
+              %td{class: table_class_from_format(format)}= format_using_format(col, format)
         %tr
           %td.row-detail-panel.hidden{:id => "row-detail-#{@report_instance.get_key(row)}", :colspan => 12}
