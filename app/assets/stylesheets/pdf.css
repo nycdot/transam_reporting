@@ -3,6 +3,23 @@
 
 }
 
+th.left, td.left {
+  text-align: left;
+}
+th.right, td.right {
+  text-align: right;
+}
+th.center, td.center {
+  text-align: center;
+}
+tr.subtotals {
+    font-weight:bold;
+    border-top: 2px solid #dddddd;
+}
+tr.subtotals>td {
+    padding-bottom: 12px !important;
+}
+
 thead { display: table-header-group; }
 tfoot { display: table-row-group; }
 tr { page-break-inside: avoid !important; }

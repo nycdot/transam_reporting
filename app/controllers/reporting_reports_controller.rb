@@ -35,6 +35,7 @@ class ReportingReportsController < ReportsController
   end
   
   def report_pdf_template(report_name)
-    render_to_string(pdf: "#{report_name}", template: "reports/show")
+    render_to_string(pdf: "#{report_name}", template: "reports/show", orientation: 'Landscape',
+                     header: { right: '[page] of [topage]' })
   end
 end
