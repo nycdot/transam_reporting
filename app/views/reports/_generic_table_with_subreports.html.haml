@@ -22,7 +22,7 @@
 
 #spinner= loader_panel_tag({:message => "Loading...", :size => 3, :spinner => "cog"})
 
-= render partial: 'reports/generic_subtable_with_subreports', locals: {data: local_assigns[:data] || @data}
+= render partial: 'reports/generic_subtable_with_subreports.html', locals: {data: local_assigns[:data] || @data}
 
 :javascript
 
