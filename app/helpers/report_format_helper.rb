@@ -6,7 +6,7 @@ module ReportFormatHelper
     when :currency
       format_as_currency(val)
     when :fiscal_year
-      format_as_fiscal_year(val.to_i)
+      format_as_fiscal_year(val.to_i) unless val.nil?
     when :integer
       format_as_integer(val)
     when :string
