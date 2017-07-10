@@ -14,7 +14,8 @@ module ReportFormatHelper
     when :checkbox
       format_as_checkbox(val)
     when :boolean
-      format_as_boolean(val)
+      # Check for 1/0 val as well as true/false given direct query clause
+      format_as_boolean(val == 0 ? false : val)
     else
       # Note, current implementation uses rescue and is thus potentially inefficient.
       # Consider alterantives.
