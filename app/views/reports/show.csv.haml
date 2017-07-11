@@ -1,4 +1,17 @@
-= CSV.generate_line @data[:labels], {:row_sep => nil}
+- # Deal with hidden columns
+- hidden_indexes = (@data[:formats] || []).each_index.select{|i| @data[:formats][i] == :hidden}
+- labels = @data[:labels]
+- hidden_indexes.reverse.each {|i| labels.delete_at(i)}
+  
+= CSV.generate_line(labels, {:row_sep => nil}).html_safe
 
-- @data[:data].each do |row|
-  = CSV.generate_line(row, {:row_sep => nil}).html_safe
+- # Determine if the data is flat or grouped
+- if @data[:data][0].length == @data[:labels].length
+  - @data[:data].each do |row|
+    - hidden_indexes.reverse.each {|i| row.delete_at(i)}
+    = CSV.generate_line(row, {:row_sep => nil}).html_safe
+- else # assume two levels
+  - @data[:data].each do |org_group|
+    - org_group.second.each_with_index do |row, i|
+      - hidden_indexes.reverse.each {|i| row.delete_at(i)}
+      = CSV.generate_line(row, {:row_sep => nil}).html_safe
