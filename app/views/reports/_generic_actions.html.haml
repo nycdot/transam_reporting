@@ -8,5 +8,16 @@
       -	elsif action[:type] == :select
         = action[:label]
         = select_tag "#{action[:where].to_s}", options_for_select(action[:values], params[action[:where]])
+      -	elsif action[:type] == :datepicker
+        = action[:label]
+        = text_field_tag "#{action[:where].to_s}", params[action[:where]], :class => 'datepicker', :data => {'behavior' => 'datepicker'}
   = button_tag :class => 'btn btn-success', :type => 'submit' do
     %i.fa.fa-filter
+
+:javascript
+  $(document).ready(function(){
+
+    $('[data-behavior~=datepicker]').datepicker({
+    });
+
+  });
