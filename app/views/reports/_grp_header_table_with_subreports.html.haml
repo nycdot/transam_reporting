@@ -30,7 +30,7 @@
       - data = {labels: @data[:labels], data: rows, formats: @data[:formats]}
       .report
         %fieldset
-          %legend= org
+          %legend= format_using_format(org, @data[:header_format] || :string)
           = render partial: 'reports/generic_subtable_with_subreports.html', locals: {data: data}
 
 :javascript
