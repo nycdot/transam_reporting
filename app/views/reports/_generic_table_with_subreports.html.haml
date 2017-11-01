@@ -40,7 +40,7 @@
       $(this).toggleClass("selected");
       // Get the selected project and target panel
       var target_key = $(this).data('target');
-      var target_panel_id = "#row-detail-" + target_key;
+      var target_panel_id = "row-detail-" + target_key;
       // Check to see if the row is selected -- if it is we load the ALIs into
       // the corresponding panel
       if ($(this).hasClass('selected')) {
@@ -60,11 +60,11 @@
               $(".modal-backdrop").remove();
             },
             error: function () {
-              transam.show_popup_message("Warning", "Something went wrong. Please try again!", "warning");
+              //transam.show_popup_message("Warning", "Something went wrong. Please try again!", "warning");
             }
         });
       }
       // Show or hide the panel
-      $(target_panel_id).toggleClass("hidden");
+      $('[id="'+target_panel_id+'"]').toggleClass("hidden");
     });
   });
