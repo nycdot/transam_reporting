@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   # Should be compatible with the transam_core value.
-  s.add_dependency "rails", "~> 4.1.16"
+  s.add_dependency "rails", "~> 4.2.7.1"
 
   # PDF
   s.add_dependency "wicked_pdf"
