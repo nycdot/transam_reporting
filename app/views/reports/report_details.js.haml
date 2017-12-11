@@ -1,2 +1,4 @@
-var panel_id = "#row-detail-#{@key}";
-$(panel_id).html("#{escape_javascript(render @details_view)}");
+var encodedString = '#{@key}';
+var decodedText = $("<p/>").html(encodedString).text();
+var panel_id = "row-detail-"+decodedText;
+$('[id="'+panel_id+'"]').html("#{escape_javascript(render @details_view)}");

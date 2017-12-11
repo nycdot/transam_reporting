@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
   # Should be compatible with the transam_core value.
   s.add_dependency "rails", "~> 4.2.7.1"
 
+  s.add_dependency 'rails-data-migrations'
+
   # PDF
   s.add_dependency "wicked_pdf"
   s.add_dependency "wkhtmltopdf-binary"
