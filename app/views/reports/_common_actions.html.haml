@@ -1,20 +1,21 @@
 :ruby
   has_action_menu_items = lookup_context.template_exists?("#{@report_view}_action_menu_items", 'reports', true)
-  
-.pull-right.btn-group.navbar-btn
-  %button.btn.btn-primary.btn-sm.dropdown-toggle{data: {toggle: "dropdown"}}
-    Actions
-    %span.caret
-  %ul.dropdown-menu{role: "menu"}
-    - if @report.printable
-      %li
-        = link_to current_url(format: :pdf), class: 'dropdown-item', target: '_blank', id: 'print_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as PDF' do
-          %i.fa.fa-print
-          = " Print to PDF"
-    - if @report.exportable
-      %li
-        = link_to current_url(format: :csv), target: '_blank', class: 'dropdown-item', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
-          %i.fa.fa-file
-          = " Export as CSV"
-    - if has_action_menu_items
-      = render partial: "#{@report_view}_action_menu_items"
+
+- unless @data[:data].empty?
+  .pull-right.btn-group.navbar-btn
+    %button.btn.btn-primary.btn-sm.dropdown-toggle{data: {toggle: "dropdown"}}
+      Actions
+      %span.caret
+    %ul.dropdown-menu{role: "menu"}
+      - if @report.printable
+        %li
+          = link_to current_url(format: :pdf), class: 'dropdown-item', target: '_blank', id: 'print_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as PDF' do
+            %i.fa.fa-print
+            = " Print to PDF"
+      - if @report.exportable
+        %li
+          = link_to current_url(format: :csv), class: 'dropdown-item', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
+            %i.fa.fa-file
+            = " Export as CSV"
+      - if has_action_menu_items
+        = render partial: "#{@report_view}_action_menu_items"
