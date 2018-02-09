@@ -17,5 +17,11 @@
           = link_to current_url(format: :csv), class: 'dropdown-item', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
             %i.fa.fa-file
             = " Export as CSV"
+      - if @report.data_exportable
+        %li
+          = link_to export_data_report_path(@report, params.except(:controller, :action).merge({format: :csv})), class: 'dropdown-item', target: '_blank', id: 'export_report', style: 'margin-top: 5px; margin-left: 5px;', title: 'Export as CSV' do
+            %i.fa.fa-file
+            = " Export Underlying Data"
+
       - if has_action_menu_items
         = render partial: "#{@report_view}_action_menu_items"
