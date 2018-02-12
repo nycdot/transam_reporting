@@ -6,7 +6,7 @@
           %th{class: table_class_from_format(@data[:formats][i])}= label.html_safe
     %tbody
       - data[:data].each do |row|
-        %tr{:class => row[0] ? 'row-action' : 'subtotals',
+        %tr{:class => row[0] ? (@report_instance.get_key(row).present? ? 'row-action' : '') : 'subtotals',
             :data => {:target => "#{@report_instance.get_key(row)}"}}
           - row.zip(data[:formats]).each do |col, format|
             - unless format == :hidden
