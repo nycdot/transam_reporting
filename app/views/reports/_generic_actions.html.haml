@@ -13,7 +13,7 @@
         = text_field_tag "#{action[:where].to_s}", params[action[:where]], :class => 'datepicker', :data => {'behavior' => 'datepicker'}
       -	elsif action[:type] == :text_field
         = action[:label]
-        = text_field_tag "#{action[:where].to_s}", params[action[:where]]
+        = text_field_tag "#{action[:where].to_s}", params[action[:where]] || action[:value]
   = button_tag :class => 'btn btn-success', :type => 'submit' do
     %i.fa.fa-filter
 
