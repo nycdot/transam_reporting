@@ -1,7 +1,7 @@
 :ruby
   has_action_menu_items = lookup_context.template_exists?("#{@report_view}_action_menu_items", 'reports', true)
 
-- unless @data[:data].empty?
+- unless @data[:data].try(:empty?)
   .pull-right.btn-group.navbar-btn
     %button.btn.btn-primary.btn-sm.dropdown-toggle{data: {toggle: "dropdown"}}
       Actions
