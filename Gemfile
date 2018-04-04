@@ -13,7 +13,7 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'transam_core', git: 'https://github.com/camsys/transam_core', branch: 'master'
+gem 'transam_core', git: 'https://github.com/camsys/transam_core', branch: :branch1
 
 # This gem allows us to share githooks. Githooks in the .hooks folder can be checked
 # in, and when "bundle install" is run this gem automatically creates symlinks into
