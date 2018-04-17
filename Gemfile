@@ -21,4 +21,4 @@ gem 'transam_core', git: 'https://github.com/camsys/transam_core', branch: :quar
 # them to .git/hooks/old and you can move them back at your leisure. Any hooks
 # checked in to .hooks will be shared among the team. If you need to re-generate
 # the symlinks, you can use 'bundle exec git-hookshot'
-gem "git-hookshot", github: "brandonweiss/git-hookshot"
+#gem "git-hookshot", github: "brandonweiss/git-hookshot"
