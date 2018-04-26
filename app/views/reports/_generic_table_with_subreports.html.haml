@@ -46,7 +46,7 @@
         // Check to see if the row is selected -- if it is we load the ALIs into
         // the corresponding panel
         if ($(this).hasClass('selected')) {
-          var url = report_detail_path.replace('xxx', target_key);
+          var url = report_detail_path.replace('xxx', encodeURIComponent(target_key));
           // AJAX load the panel
           $.ajax({
               url: url,
