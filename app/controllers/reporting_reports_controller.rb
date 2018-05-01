@@ -1,6 +1,6 @@
 class ReportingReportsController < ReportsController
 
-  before_filter :get_report, :only => [:show, :load, :details, :export_data]
+  before_action :get_report, :only => [:show, :load, :details, :export_data]
 
   # Injects pdf and csv formats.
   # handle_show is a protected method of ReportController that sets up the @report_instance variable.
