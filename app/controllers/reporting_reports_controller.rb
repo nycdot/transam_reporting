@@ -9,7 +9,7 @@ class ReportingReportsController < ReportsController
     handle_show do
       @actions = @report_instance.try(:get_actions)
       
-      sanitized_report_name = @report.to_s.parameterize('_')
+      sanitized_report_name = @report.to_s.parameterize(separator: '_')
 
       respond_to do |format|
         format.html
