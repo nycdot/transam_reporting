@@ -1,5 +1,6 @@
 module ReportFormatHelper
 
+  # return appropriate alignment class for given format
   def table_class_from_format(format)
     case format
     when :currencyM, :currency, :integer, :boolean
@@ -11,9 +12,5 @@ module ReportFormatHelper
     else
       'left'
     end
-  end
-
-  def current_url(new_params)
-    url_for params: params.merge(new_params)
   end
 end
