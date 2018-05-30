@@ -37,7 +37,7 @@ class ReportingReportsController < ReportsController
   def export_data
     @data = @report.class_name.constantize.get_underlying_data(@organization_list, params)
 
-    sanitized_report_name = @report.to_s.parameterize('_')
+    sanitized_report_name = @report.to_s.parameterize(separator: '_')
 
     respond_to do |format|
       format.csv do
