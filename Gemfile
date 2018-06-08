@@ -12,7 +12,7 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-
+gem 'mysql2', "~> 0.5.1"
 gem 'transam_core', git: 'https://github.com/camsys/transam_core', branch: :quarter2
 
 # This gem allows us to share githooks. Githooks in the .hooks folder can be checked
