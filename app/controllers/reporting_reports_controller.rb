@@ -1,6 +1,6 @@
 class ReportingReportsController < ReportsController
 
-  before_filter :get_report, :only => [:show, :load, :details, :export_data]
+  before_action :get_report, :only => [:show, :load, :details, :export_data]
 
   # Injects pdf and csv formats.
   # handle_show is a protected method of ReportController that sets up the @report_instance variable.
@@ -9,7 +9,7 @@ class ReportingReportsController < ReportsController
     handle_show do
       @actions = @report_instance.try(:get_actions)
       
-      sanitized_report_name = @report.to_s.parameterize('_')
+      sanitized_report_name = @report.to_s.parameterize(separator: '_')
 
       respond_to do |format|
         format.html
@@ -37,7 +37,7 @@ class ReportingReportsController < ReportsController
   def export_data
     @data = @report.class_name.constantize.get_underlying_data(@organization_list, params)
 
-    sanitized_report_name = @report.to_s.parameterize('_')
+    sanitized_report_name = @report.to_s.parameterize(separator: '_')
 
     respond_to do |format|
       format.csv do
