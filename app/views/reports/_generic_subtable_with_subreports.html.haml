@@ -10,6 +10,9 @@
             :data => {:target => "#{@report_instance.get_key(row)}"}}
           - row.zip(data[:formats]).each do |col, format|
             - unless format == :hidden
-              %td{class: table_class_from_format(format)}= format_using_format(col, format)
+              - if format == :object_url
+                %td{class: 'left'}= link_to col, @report_instance.get_object_url(row)
+              - else
+                %td{class: table_class_from_format(format)}= format_using_format(col, format)
         %tr
           %td.row-detail-panel.hidden{:id => "row-detail-#{@report_instance.get_key(row)}", :colspan => 12}

@@ -13,4 +13,17 @@ module ReportFormatHelper
       'left'
     end
   end
+
+  # Some textual formatting of exported data
+  def format_for_export(row, formats)
+    formatted_row = []
+    row.zip(formats).each do |val, format|
+      formatted = val
+      if format == :boolean
+        formatted = val ? 'Yes' : ''
+      end
+      formatted_row << formatted
+    end
+    formatted_row
+  end
 end
