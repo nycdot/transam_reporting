@@ -22,7 +22,7 @@ module ReportFormatHelper
       if format == :boolean
         formatted = val ? 'Yes' : ''
       elsif format == :fiscal_year
-        formatted = format_as_fiscal_year(val.to_i)
+        formatted = val.blank? ? '' : format_as_fiscal_year(val.to_i)
       end
       formatted_row << formatted
     end
