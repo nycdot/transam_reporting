@@ -16,5 +16,5 @@ reports = [
 ]
 
 reports.each do |report|
-  Report.find_by(report).update!(printable: true, exportable: true)
+  Report.find_by(report).update!(printable: true, exportable: false)
 end
