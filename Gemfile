@@ -17,6 +17,8 @@ gem 'active_record-acts_as', git: 'https://github.com/camsys/active_record-acts_
 gem 'mysql2', "~> 0.5.1"
 gem 'transam_core', git: 'https://github.com/camsys/transam_core', branch: :quarter2
 
+gem "chartkick"
+
 # This gem allows us to share githooks. Githooks in the .hooks folder can be checked
 # in, and when "bundle install" is run this gem automatically creates symlinks into
 # your local .git/hooks. If you have pre-existing hooks in .git/hooks, it will move

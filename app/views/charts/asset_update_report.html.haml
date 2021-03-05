@@ -1,0 +1,32 @@
+%h4.text-center
+  = form_with url: asset_update_report_charts_path, method: :get do |form|
+    Viewing data from 
+    = form.select :start_month, (1..12), selected: @start_month
+    ='/'
+    = form.select :start_year, (1900..Time.now.year), selected: @start_year
+    to
+    = form.select :end_month, (1..12), selected: @end_month
+    ='/'
+    = form.select :end_year, (1900..Time.now.year), selected: @end_year
+    = form.submit "Go"
+
+%br
+%h2
+  Asset Events by Type
+=column_chart @typed_counts
+
+%br
+%h2
+  Asset Events by Month
+=line_chart @monthly_counts
+
+%br
+%h2
+  Asset Events by Month and Type
+=line_chart @monthly_typed_counts
+
+%br
+%h2
+  Assets Added by Organization
+=bar_chart @org_asset_counts, height: "1500px"
+
