@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   # PDF
   s.add_dependency "wicked_pdf", '1.1.0' # downgrade for stackoverflow
   s.add_dependency "wkhtmltopdf-binary"
+  s.add_dependency "chartkick"
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "factory_girl_rails"

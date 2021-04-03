@@ -1,4 +1,5 @@
 require 'wicked_pdf'
+require 'chartkick'
 
 module TransamReporting
   class Engine < ::Rails::Engine
