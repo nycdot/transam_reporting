@@ -17,7 +17,7 @@ module ReportFormatHelper
   # Some textual formatting of exported data
   def format_for_export(row, formats)
     formatted_row = []
-    row.zip(formats).each do |val, format|
+    row&.zip(formats)&.each do |val, format|
       formatted = val
       if format == :boolean
         formatted = val ? 'Yes' : ''
