@@ -11,9 +11,17 @@
           - row.zip(data[:formats]).each do |col, format|
             - unless format == :hidden
               - if format == :object_url
-                %td{class: 'left'}= link_to col, @report_instance.get_object_url(row)
+                - object_url = @report_instance.get_object_url(row)
+                - if object_url
+                  %td{class: 'left'}= link_to col, object_url
+                -else
+                  %td{class: 'left'}
               - elsif Rails.application.config.try(:use_new_scenarios_tool) && format == :scenario_url
-                %td{class: 'left'}= link_to col, @report_instance.get_scenario_url(row)
+                - scenario_url = @report_instance.get_scenario_url(row)
+                - if scenario_url
+                  %td{class: 'left'}= link_to col, scenario_url
+                - else
+                  %td{class: 'left'}
               - else
                 %td{class: table_class_from_format(format)}= format_using_format(col, format)
         %tr
