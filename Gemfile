@@ -15,7 +15,8 @@ gem 'active_record-acts_as', git: 'https://github.com/camsys/active_record-acts_
 # To use debugger
 # gem 'debugger'
 gem 'mysql2', "~> 0.5.1"
-gem 'transam_core', git: 'https://github.com/camsys/transam_core', branch: :quarter4
+gem 'transam_core', git: 'https://github.com/nycdot/transam_core.git', branch: 'rails-6'
+# gem 'transam_core', path: "../transam_core"
 
 # This gem allows us to share githooks. Githooks in the .hooks folder can be checked
 # in, and when "bundle install" is run this gem automatically creates symlinks into
